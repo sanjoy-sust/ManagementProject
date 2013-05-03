@@ -8,6 +8,6 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
 
-	<bean name="/employee/*.htm" class="com.springapp.UserController" />
+	<bean name="/user/*.htm" class="com.springapp.UserController" />
 
 </beans>
