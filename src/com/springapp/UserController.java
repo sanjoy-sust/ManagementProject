@@ -6,28 +6,31 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.domain.User;
+
 public class UserController extends MultiActionController {
 
 	public ModelAndView login(HttpServletRequest request,
-			HttpServletResponse response) {
-		String user = "san";
+			HttpServletResponse response,User user) {
+		user.setName("sanjoy");
+		String userStr = "san";
 		try {
-			user = request.getParameter("userName");
-			if(user == null)
-				user = "san";
+			userStr = request.getParameter("name");
+			if(userStr == null)
+				userStr = "san";
 		} catch (Exception e) {
-			user = "san";
+			userStr = "san";
 		}
-		if (user.equals("sanjoy")) {
+		if (userStr.equals("sanjoy")) {
 			ModelAndView ret = new ModelAndView("employee");
 			ret.addObject("message", "User Sanjoy");
 			return ret;
 		} else {
 			ModelAndView ret = new ModelAndView("loginForm");
 			ret.addObject("message", "anynomious User");
+			ret.addObject("userForm",user);
 			return ret;
 		}
-
 	}
 
 	public ModelAndView add(HttpServletRequest request,

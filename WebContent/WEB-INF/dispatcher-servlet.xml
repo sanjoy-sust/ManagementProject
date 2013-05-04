@@ -9,5 +9,4 @@
 		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
 
 	<bean name="/user/*.htm" class="com.springapp.UserController" />
-
 </beans>
