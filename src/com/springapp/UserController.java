@@ -6,9 +6,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.dao.UserDAO;
 import com.domain.User;
 
 public class UserController extends MultiActionController {
+	private UserDAO userDAO;
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response, User user) {
@@ -30,6 +36,11 @@ public class UserController extends MultiActionController {
 	public ModelAndView register(HttpServletRequest request,
 			HttpServletResponse response, User user) {
 		User u = user;
+		if (user.getName() == null) {
+
+		} else {
+			userDAO.saveUser(user);
+		}
 		ModelAndView ret = new ModelAndView("register");
 		ret.addObject("user", user);
 		return ret;
