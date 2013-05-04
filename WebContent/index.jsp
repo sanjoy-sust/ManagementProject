@@ -7,7 +7,8 @@
 <title>Multi Action Controller Example Demo</title>
 </head>
 <body>
-<a href="user/login.htm" onclick="" id="clickMe">Add Employee</a>&nbsp;|&nbsp;<br/>
+<a href="user/login.htm" onclick="" id="clickMe">Login</a>&nbsp;|&nbsp;<br/>
+<a href="user/register.htm" onclick="" id="clickMe">Register</a>&nbsp;|&nbsp;
 <a href="user/add.htm" onclick="" id="clickMe">Add Employee</a>&nbsp;|&nbsp;
 <a href="user/update.htm" onclick="" id="clickMe">Update Employee</a>&nbsp;|&nbsp;
 <a href="user/delete.htm" onclick="" id="clickMe">Delete Employee</a>

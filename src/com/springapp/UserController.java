@@ -11,26 +11,28 @@ import com.domain.User;
 public class UserController extends MultiActionController {
 
 	public ModelAndView login(HttpServletRequest request,
-			HttpServletResponse response,User user) {
-		user.setName("sanjoy");
-		String userStr = "san";
-		try {
-			userStr = request.getParameter("name");
-			if(userStr == null)
-				userStr = "san";
-		} catch (Exception e) {
-			userStr = "san";
-		}
-		if (userStr.equals("sanjoy")) {
-			ModelAndView ret = new ModelAndView("employee");
-			ret.addObject("message", "User Sanjoy");
-			return ret;
-		} else {
+			HttpServletResponse response, User user) {
+
+		if (user.getName() == null) {
 			ModelAndView ret = new ModelAndView("loginForm");
 			ret.addObject("message", "anynomious User");
-			ret.addObject("userForm",user);
+			ret.addObject("userForm", user);
+			return ret;
+		} else {
+			String userStr = user.getName();
+			String password = user.getPassword();
+			ModelAndView ret = new ModelAndView("employee");
+			ret.addObject("message", "User " + userStr);
 			return ret;
 		}
+	}
+
+	public ModelAndView register(HttpServletRequest request,
+			HttpServletResponse response, User user) {
+		User u = user;
+		ModelAndView ret = new ModelAndView("register");
+		ret.addObject("user", user);
+		return ret;
 	}
 
 	public ModelAndView add(HttpServletRequest request,

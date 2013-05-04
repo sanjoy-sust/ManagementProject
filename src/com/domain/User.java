@@ -5,21 +5,22 @@ import java.util.Date;
 public class User {
 	private long id;
 	private String name;
+	private String fullName;
 	private String password;
 	private String address;
 	private String email;
 	private Date birthDate;
 	private String nId;
-	private String ocuupation;
+	private String occupation;
 	private String designation;
 	private String nationality;
 
-	public String getOcuupation() {
-		return ocuupation;
+	public String getOccupation() {
+		return occupation;
 	}
 
-	public void setOcuupation(String ocuupation) {
-		this.ocuupation = ocuupation;
+	public void setOcuupation(String occupation) {
+		this.occupation = occupation;
 	}
 
 	public String getNationality() {
@@ -44,6 +45,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getPassword() {

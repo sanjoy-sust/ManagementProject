@@ -7,7 +7,8 @@
 </head>
 <body>
 <form:form action="login.htm" method="post" commandName="userForm" id="user_form">
-   Users: <form:textarea path="name" />
+   User Name: <form:input path="name" />
+   User Name: <form:password path="password" />
    <form:button>Submit</form:button>
 </form:form>
 </body>
