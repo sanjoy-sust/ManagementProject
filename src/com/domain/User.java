@@ -21,6 +21,7 @@ public class User {
 	private String occupation;
 	private String designation;
 	private String nationality;
+	private String gender;
 
 	@Column(name = "occupation")
 	public String getOccupation() {
@@ -120,5 +121,14 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@Column(name = "gender")
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 }

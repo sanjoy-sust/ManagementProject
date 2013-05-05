@@ -35,14 +35,16 @@ public class UserController extends MultiActionController {
 
 	public ModelAndView register(HttpServletRequest request,
 			HttpServletResponse response, User user) {
-		User u = user;
-		if (user.getName() == null) {
-
-		} else {
-			userDAO.saveUser(user);
-		}
 		ModelAndView ret = new ModelAndView("register");
+		if (user.getName() == null) {
+          ret.addObject("success","notsuccess");
+		} else {
+			
+			userDAO.saveUser(user);
+			ret.addObject("success","success");
+		}
 		ret.addObject("user", user);
+		
 		return ret;
 	}
 
