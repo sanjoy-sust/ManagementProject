@@ -1,21 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>User Registration</title>
-<link rel="stylesheet" href="/ManagementProject/css/FormValidation.css">
-<script type="text/javascript"
-	src="/ManagementProject/js/jquery-1.9.1.js"></script>
-<script type="text/javascript"
-	src="/ManagementProject/js/FormValidation.js"></script>
-	
+<title>Insert title here</title>
 </head>
 <body>
-<div id = "divvalue">
-</div>
-	<form:form  method="post" commandName="user"
-		id="regForm">
+	<form:form method="post" commandName="user" id="regForm">
 		<table align="center">
 			<tr>
 				<td align=center>User registration</td>
@@ -54,7 +50,7 @@
 			<tr>
 				<td>Gender:</td>
 				<td><form:radiobutton name="gender" path="gender" value="Male"
-						label="Male" /> <form:radiobutton name="gender" path="gender"
+						label="Male" disabled="false"/> <form:radiobutton name="gender" path="gender"
 						value="Female" label="Female" /></td>
 				<td id="genderError" class="red">&nbsp;</td>
 			</tr>
@@ -79,8 +75,8 @@
 				<td id="nationalIdError" class="red">&nbsp;</td>
 			</tr>
 			<tr>
-				<td><button type="reset" value="CLEAR" id="reset" >CLEAR</button></td>
-				<td><button type="submit" id = "subbutton" value="Submit">Submit</button></td>
+				<td><button type="reset" value="CLEAR" id="reset">CLEAR</button></td>
+				<td><button type="submit" id="subbutton" value="Submit">Submit</button></td>
 			</tr>
 		</table>
 	</form:form>

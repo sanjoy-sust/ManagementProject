@@ -1,5 +1,8 @@
 package com.springapp;
 
+import java.util.ArrayList;
+
+import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,15 +40,20 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response, User user) {
 		ModelAndView ret = new ModelAndView("register");
 		if (user.getName() == null) {
-          ret.addObject("success","notsuccess");
+			ret.addObject("success", "notsuccess");
 		} else {
-			
-			userDAO.saveUser(user);
-			ret.addObject("success","success");
+			// userDAO.saveUser(user);
+			ret.addObject("success", "success");
 		}
 		ret.addObject("user", user);
-		
+
 		return ret;
+	}
+
+	public ModelAndView registerSave(HttpServletRequest request,
+			HttpServletResponse response, User user) {
+		userDAO.saveUser(user);
+		return new ModelAndView("message");
 	}
 
 	public ModelAndView add(HttpServletRequest request,
@@ -63,9 +71,18 @@ public class UserController extends MultiActionController {
 	}
 
 	public ModelAndView update(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		System.out.println("Calling Update Employee...");
-		return new ModelAndView("employee", "message", "Employee Updated");
+			HttpServletResponse response, User user) throws Exception {
+		User u = user;
+	    ModelAndView ret =	new ModelAndView("update");
+	    ret.addObject("user",user);
+		return ret;
+	}
 
+	public ModelAndView userList(HttpServletRequest request,
+			HttpServletResponse response,User user) {
+		ModelAndView ret = new ModelAndView("userList");
+		ret.addObject("user", user);
+		ret.addObject("userList", userDAO.listUser());
+		return ret;
 	}
 }

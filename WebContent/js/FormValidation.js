@@ -12,14 +12,14 @@ function init() {
 
 function validateForm() {
 	return (isNotEmpty("fullName", "Please Enter Your Full Name")
-			&&isNotEmpty("name", "Please enter your name!")
-			&&isNotEmpty("email", "Please Enter your email")
-			&&isNotEmpty("password", "Please Enter a Password")
-			&& isLengthMinMax("password", "Enter a valid password!", 6, 8) && verifyPassword(
-			"password", "vpass", "Different from the password!")
-			&& isChecked("gender", "Please check a gender!")
-			&& isValidEmail("email", "Enter a valid email!")
-			);
+			&& isNotEmpty("name", "Please enter your name!")
+			&& isNotEmpty("email", "Please Enter your email")
+			&& isNotEmpty("password", "Please Enter a Password")
+			&& isLengthMinMax("password", "Enter a valid password!", 6, 8)
+			&& verifyPassword("password", "vpass",
+					"Different from the password!")
+			&& isChecked("gender", "Please check a gender!") && isValidEmail(
+			"email", "Enter a valid email!"));
 }
 
 // Return true if the input value is not empty
@@ -169,37 +169,55 @@ function clearDisplay() {
 	document.getElementById("name").focus();
 }
 
-function showAlert()
-{
+function showAlert() {
 	var successMsg = "Form Submitted Successfully";
 	alert(successMsg);
 }
 
-var user = {
-		name: "Wahid"
-		
-};
+$(document).ready(function() {
+	$("#subbutton").click(function() {
+		if (validateForm()) {
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var fullName = document.getElementById("fullName").value;
+			var password = document.getElementById("password").value;
+			var address = document.getElementById("address").value;
+			var nationalId = document.getElementById("nationalId").value;
+			var occupation = document.getElementById("occupation").value;
+			var nationality = document.getElementById("nationality").value;
+			var gender = document.getElementsByName("gender").value;
 
-$(document).ready(function(){
-	alert("");
-	$("#subbutton").click(function(){
-		alert("");
-		$.ajax({
-			//this is the php file that processes the data and send mail
-			url: "register.htm",	
-			
-			//GET method is used
-			type: "POST",
+			var user = {
+				name : name,
+				email : email,
+				fullName : fullName,
+				password : password,
+				address : address,
+				nationalId : nationalId,
+				occupation : occupation,
+				nationality : nationality,
+				gender : gender
+			};
 
-			//pass the data			
-			data: user,		
-			
-			
-			//success
-			success: function (html) {				
-				//if process.php returned 1/true (send mail success)
-				alert("success");				
-			}		
-		});
+			$.ajax({
+				// this is the php file that processes the data and send mail
+				url : "registerSave.htm",
+
+				// GET method is used
+				type : "POST",
+
+				// pass the data
+				data : user,
+				dataType:"html",
+				// success
+				success : function(html) {
+					alert("in");
+					$("td input").each(function() {
+						$(this).val('');
+					});
+				},
+				error:function(request, status, error){alert(request.responseText); alert(status); alert(error);}
+			});
+		}
 	});
 });

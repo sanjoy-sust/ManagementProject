@@ -12,6 +12,7 @@
 <a href="user/add.htm" onclick="" id="clickMe">Add Employee</a>&nbsp;|&nbsp;
 <a href="user/update.htm" onclick="" id="clickMe">Update Employee</a>&nbsp;|&nbsp;
 <a href="user/delete.htm" onclick="" id="clickMe">Delete Employee</a>
-
+<a href="welcome.htm" onclick="" id="clickMe">Testing</a>
+<a href="user/userList.htm" onclick="" id="clickMe">UserList</a>
 </body>
 </html>
