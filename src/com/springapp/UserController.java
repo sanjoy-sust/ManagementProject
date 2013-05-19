@@ -53,7 +53,19 @@ public class UserController extends MultiActionController {
 	public ModelAndView registerSave(HttpServletRequest request,
 			HttpServletResponse response, User user) {
 		userDAO.saveUser(user);
-		return new ModelAndView("message");
+		ModelAndView ret =new ModelAndView("register");
+		User u = new User();
+		ret.addObject("user",u);
+		
+		return ret;
+	}
+	
+	public ModelAndView registerUpdate(HttpServletRequest request,
+			HttpServletResponse response, User user) {
+		userDAO.update(user);
+		ModelAndView ret =new ModelAndView("register");
+		ret.addObject("user",user);
+		return ret;
 	}
 
 	public ModelAndView add(HttpServletRequest request,

@@ -7,5 +7,6 @@ public interface UserDAO {
 	
 	public void saveUser(User user) ;
 	public List<User> listUser() ;
-	void delete(User user);
+	public void update(User user);
+	public void delete(User user);
 }

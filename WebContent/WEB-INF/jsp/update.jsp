@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form method="post" commandName="user" id="regForm">
+	<form:form action = "registerSave.htm" method="post" commandName="user" id="regForm">
 		<table align="center">
 			<tr>
 				<td align=center>User registration</td>

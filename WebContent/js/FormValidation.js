@@ -196,28 +196,28 @@ $(document).ready(function() {
 				nationalId : nationalId,
 				occupation : occupation,
 				nationality : nationality,
-				gender : gender
+				gender : gender,
 			};
 
-			$.ajax({
-				// this is the php file that processes the data and send mail
-				url : "registerSave.htm",
-
-				// GET method is used
-				type : "POST",
-
-				// pass the data
-				data : user,
-				dataType:"html",
-				// success
-				success : function(html) {
-					alert("in");
-					$("td input").each(function() {
-						$(this).val('');
-					});
-				},
-				error:function(request, status, error){alert(request.responseText); alert(status); alert(error);}
-			});
+//			$.ajax({
+//				// this is the php file that processes the data and send mail
+//				url : "registerSave.htm",
+//
+//				// GET method is used
+//				type : "POST",
+//
+//				// pass the data
+//				data : user,
+//				dataType:"html",
+//				// success
+//				success : function(html) {
+//					alert("in");
+//					$("td input").each(function() {
+//						$(this).val('');
+//					});
+//				},
+//				error:function(request, status, error){alert(request.responseText); alert(status); alert(error);}
+//			});
 		}
 	});
 });

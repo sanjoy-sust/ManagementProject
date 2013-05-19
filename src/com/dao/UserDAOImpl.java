@@ -23,6 +23,11 @@ public class UserDAOImpl implements UserDAO {
 	{
 		hibernateTemplate.delete(user);
 	}
+	@Override
+	public void update(User user)
+	{
+		hibernateTemplate.saveOrUpdate(user);
+	}
 	
 	@Override
 	@SuppressWarnings("unchecked")

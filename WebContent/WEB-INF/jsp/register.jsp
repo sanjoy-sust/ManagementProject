@@ -14,7 +14,7 @@
 <body>
 <div id = "divvalue">
 </div>
-	<form:form  method="post" commandName="user"
+	<form:form action = "registerSave.htm" method="post" commandName="user"
 		id="regForm">
 		<table align="center">
 			<tr>
