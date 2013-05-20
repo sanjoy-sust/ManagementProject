@@ -1,12 +1,15 @@
 package com.dao;
 
 import java.util.List;
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import com.domain.User;
 
 public class UserDAOImpl implements UserDAO {
-
+	private SessionFactory sessionFactory;
+    
 	private HibernateTemplate hibernateTemplate;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -26,7 +29,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void update(User user)
 	{
-		hibernateTemplate.saveOrUpdate(user);
+		hibernateTemplate.update(user);
 	}
 	
 	@Override

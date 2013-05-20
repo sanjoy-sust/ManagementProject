@@ -76,8 +76,9 @@ public class UserController extends MultiActionController {
 	}
 
 	public ModelAndView delete(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,User user) throws Exception {
 		System.out.println("Calling Delete Employee...");
+		userDAO.delete(user);
 		return new ModelAndView("employee", "message", "Employee Deleted");
 
 	}

@@ -9,17 +9,14 @@
 	src="/ManagementProject/js/jquery-1.9.1.js"></script>
 <script type="text/javascript"
 	src="/ManagementProject/js/FormValidation.js"></script>
-	
+<link rel="stylesheet" href="/ManagementProject/css/tableDesign.css">
 </head>
 <body>
-<div id = "divvalue">
-</div>
-	<form:form action = "registerSave.htm" method="post" commandName="user"
+	<p align = "center"> Registration</p>
+	<form:form action="registerSave.htm" method="post" commandName="user"
 		id="regForm">
-		<table align="center">
-			<tr>
-				<td align=center>User registration</td>
-			</tr>
+		<table align="center" border="1" class="grid">
+			
 			<tr>
 				<td>Full Name:</td>
 				<td><form:input id="fullName" path="fullName" /></td>
@@ -79,8 +76,8 @@
 				<td id="nationalIdError" class="red">&nbsp;</td>
 			</tr>
 			<tr>
-				<td><button type="reset" value="CLEAR" id="reset" >CLEAR</button></td>
-				<td><button type="submit" id = "subbutton" value="Submit">Submit</button></td>
+				<td><button type="reset" value="CLEAR" id="reset">CLEAR</button></td>
+				<td><button type="submit" id="subbutton" value="Submit">Submit</button></td>
 			</tr>
 		</table>
 	</form:form>

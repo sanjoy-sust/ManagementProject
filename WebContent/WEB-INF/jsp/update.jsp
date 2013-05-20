@@ -9,12 +9,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/ManagementProject/css/tableDesign.css">
 </head>
 <body>
-	<form:form action = "registerSave.htm" method="post" commandName="user" id="regForm">
-		<table align="center">
+<p align = "center"> User Update</p>
+	<form:form action = "registerUpdate.htm" method="post" commandName="user" id="regForm">
+		<table align="center" border="1" class="grid">
 			<tr>
-				<td align=center>User registration</td>
+				<form:hidden id="id" path="id" />
 			</tr>
 			<tr>
 				<td>Full Name:</td>
@@ -26,16 +28,7 @@
 				<td><form:input id="name" path="name" /></td>
 				<td id="nameError" class="red">&nbsp;</td>
 			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><form:password id="password" path="password" /></td>
-				<td id="passwordError" class="red">&nbsp;</td>
-			</tr>
-			<tr>
-				<td>Confirm Password:</td>
-				<td><input id="vpass" type="password" id="cPass" /></td>
-				<td id="vpassError" class="red">&nbsp;</td>
-			</tr>
+			
 			<tr>
 				<td>Address:</td>
 				<td><form:textarea id="address" path="address" rows="3"
