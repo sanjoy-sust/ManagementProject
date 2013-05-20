@@ -13,7 +13,7 @@
 </head>
 <body>
 <p align = "center"> User Update</p>
-	<form:form action = "registerUpdate.htm" method="post" commandName="user" id="regForm">
+	<form:form action = "updateSave.htm" method="post" commandName="user" id="regForm">
 		<table align="center" border="1" class="grid">
 			<tr>
 				<form:hidden id="id" path="id" />

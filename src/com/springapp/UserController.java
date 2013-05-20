@@ -30,8 +30,17 @@ public class UserController extends MultiActionController {
 		} else {
 			String userStr = user.getName();
 			String password = user.getPassword();
-			ModelAndView ret = new ModelAndView("employee");
+			User newUser = userDAO.getUserByUserNameAndPassword(userStr, password);
+			ModelAndView ret = new ModelAndView();
+			if(newUser.getName() == null)
+			{
+			ret = new ModelAndView("employee");
 			ret.addObject("message", "User " + userStr);
+			}else{
+				ret = new ModelAndView("userList");
+				ret.addObject("user", user);
+				ret.addObject("userList", userDAO.listUser());
+			}
 			return ret;
 		}
 	}
@@ -60,13 +69,7 @@ public class UserController extends MultiActionController {
 		return ret;
 	}
 	
-	public ModelAndView registerUpdate(HttpServletRequest request,
-			HttpServletResponse response, User user) {
-		userDAO.update(user);
-		ModelAndView ret =new ModelAndView("register");
-		ret.addObject("user",user);
-		return ret;
-	}
+	
 
 	public ModelAndView add(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -88,6 +91,14 @@ public class UserController extends MultiActionController {
 		User u = user;
 	    ModelAndView ret =	new ModelAndView("update");
 	    ret.addObject("user",user);
+		return ret;
+	}
+	
+	public ModelAndView updateSave(HttpServletRequest request,
+			HttpServletResponse response, User user) {
+		userDAO.update(user);
+		ModelAndView ret =new ModelAndView("update");
+		ret.addObject("user",user);
 		return ret;
 	}
 

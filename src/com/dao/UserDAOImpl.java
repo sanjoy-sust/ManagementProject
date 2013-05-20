@@ -31,6 +31,12 @@ public class UserDAOImpl implements UserDAO {
 	{
 		hibernateTemplate.update(user);
 	}
+	public User getUserByUserNameAndPassword(String name,String password)
+	{
+		User user = new User();
+		List<User> users = hibernateTemplate.find("from User where Name = '"+name+"' and password ='"+password+"'");
+		return users.get(0);
+	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
