@@ -42,20 +42,13 @@ public class UserDAOImpl implements UserDAO {
 		values[0] = name;
 	    values[1] = password;
 		List<User> users = hibernateTemplate.findByNamedQueryAndNamedParam(queryName, paramNames, values);
-		// Query query =
-		// sessionFactory.getCurrentSession().getNamedQuery("userForLogin");
-		// query.setString("name", name);
-		// query.setString("password", password);
-		// List<User> users =
-		// hibernateTemplate.find("from User where Name = '"+name+"' and password ='"+password+"'");
-		// "from User where Name = '"+name+"' and password ='"+password+"'"
 		return users.get(0);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<User> listUser() {
-		return hibernateTemplate.find("from User");
+		return hibernateTemplate.findByNamedQuery("userList");
 	}
 
 }

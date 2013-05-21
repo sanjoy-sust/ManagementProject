@@ -63,10 +63,10 @@ public class UserController extends MultiActionController {
 	public ModelAndView registerSave(HttpServletRequest request,
 			HttpServletResponse response, User user) {
 		userDAO.saveUser(user);
-		ModelAndView ret = new ModelAndView("register");
 		User u = new User();
-		ret.addObject("user", u);
-
+		ModelAndView ret = new ModelAndView("userList");
+		ret.addObject("user", user);
+		ret.addObject("userList", userDAO.listUser());
 		return ret;
 	}
 
@@ -81,7 +81,10 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response, User user) throws Exception {
 		System.out.println("Calling Delete Employee...");
 		userDAO.delete(user);
-		return new ModelAndView("employee", "message", "Employee Deleted");
+		ModelAndView ret = new ModelAndView("userList");
+		ret.addObject("user", user);
+		ret.addObject("userList", userDAO.listUser());
+		return ret;
 
 	}
 

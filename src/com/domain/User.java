@@ -8,7 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.*;
-@javax.persistence.NamedQueries({@javax.persistence.NamedQuery(name = "userForLogin",	query = "from User u where u.name = :name and u.password = :password")})
+
+@javax.persistence.NamedQueries({
+		@javax.persistence.NamedQuery(name = "userForLogin", query = "from User u where u.name = :name and u.password = :password"),
+		@javax.persistence.NamedQuery(name = "userList", query = "from User") })
 @Entity
 @Table(name = "user")
 public class User {

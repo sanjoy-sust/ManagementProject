@@ -18,8 +18,7 @@
 		<div id="login-box">
 
 			<H2>Login</H2>
-			Lorem Ipsum is simply dummy text of the printing and typesetting
-			industry. <br /> <br />
+			 <br /> <br />
 			<form:form action="login.htm" method="post" commandName="userForm"
 				id="user_form">
 				<div id="login-box-name" style="margin-top: 20px;">Email:</div>
@@ -39,7 +38,7 @@
 					name="1" value="1"> Remember Me <a href="#"
 						style="margin-left: 30px;">Forgot password?</a></span>
 				<br />
-				<form:button id = "submitBtn" style="margin-right: 30px;" >LogIn</span></form:button>
+				<form:button id = "btnSubmit" style="float:right;margin-right: 30px;border:medium none;background:url(/ManagementProject/images/login-btn.png);width:103px;height:42px;margin-top:25px;" ></span></form:button>
 			</form:form>
 
 		</div>

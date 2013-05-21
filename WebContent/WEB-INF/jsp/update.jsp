@@ -17,6 +17,7 @@
 		<table align="center" border="1" class="grid">
 			<tr>
 				<form:hidden id="id" path="id" />
+				<form:hidden id = "password" path = "password"/>
 			</tr>
 			<tr>
 				<td>Full Name:</td>
