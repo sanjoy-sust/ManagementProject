@@ -6,6 +6,7 @@ import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.annotations.NamedQueries;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -22,7 +23,7 @@ public class UserController extends MultiActionController {
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response, User user) {
 
-		if (user.getName() == null) {
+		if ((user.getName() == null || user.getPassword() == null)) {
 			ModelAndView ret = new ModelAndView("loginForm");
 			ret.addObject("message", "anynomious User");
 			ret.addObject("userForm", user);
@@ -30,13 +31,13 @@ public class UserController extends MultiActionController {
 		} else {
 			String userStr = user.getName();
 			String password = user.getPassword();
-			User newUser = userDAO.getUserByUserNameAndPassword(userStr, password);
+			User newUser = userDAO.getUserByUserNameAndPassword(userStr,
+					password);
 			ModelAndView ret = new ModelAndView();
-			if(newUser.getName() == null)
-			{
-			ret = new ModelAndView("employee");
-			ret.addObject("message", "User " + userStr);
-			}else{
+			if (newUser.getName() == null) {
+				ret = new ModelAndView("employee");
+				ret.addObject("message", "User " + userStr);
+			} else {
 				ret = new ModelAndView("userList");
 				ret.addObject("user", user);
 				ret.addObject("userList", userDAO.listUser());
@@ -62,14 +63,12 @@ public class UserController extends MultiActionController {
 	public ModelAndView registerSave(HttpServletRequest request,
 			HttpServletResponse response, User user) {
 		userDAO.saveUser(user);
-		ModelAndView ret =new ModelAndView("register");
+		ModelAndView ret = new ModelAndView("register");
 		User u = new User();
-		ret.addObject("user",u);
-		
+		ret.addObject("user", u);
+
 		return ret;
 	}
-	
-	
 
 	public ModelAndView add(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -79,7 +78,7 @@ public class UserController extends MultiActionController {
 	}
 
 	public ModelAndView delete(HttpServletRequest request,
-			HttpServletResponse response,User user) throws Exception {
+			HttpServletResponse response, User user) throws Exception {
 		System.out.println("Calling Delete Employee...");
 		userDAO.delete(user);
 		return new ModelAndView("employee", "message", "Employee Deleted");
@@ -89,21 +88,21 @@ public class UserController extends MultiActionController {
 	public ModelAndView update(HttpServletRequest request,
 			HttpServletResponse response, User user) throws Exception {
 		User u = user;
-	    ModelAndView ret =	new ModelAndView("update");
-	    ret.addObject("user",user);
+		ModelAndView ret = new ModelAndView("update");
+		ret.addObject("user", user);
 		return ret;
 	}
-	
+
 	public ModelAndView updateSave(HttpServletRequest request,
 			HttpServletResponse response, User user) {
 		userDAO.update(user);
-		ModelAndView ret =new ModelAndView("update");
-		ret.addObject("user",user);
+		ModelAndView ret = new ModelAndView("update");
+		ret.addObject("user", user);
 		return ret;
 	}
 
 	public ModelAndView userList(HttpServletRequest request,
-			HttpServletResponse response,User user) {
+			HttpServletResponse response, User user) {
 		ModelAndView ret = new ModelAndView("userList");
 		ret.addObject("user", user);
 		ret.addObject("userList", userDAO.listUser());

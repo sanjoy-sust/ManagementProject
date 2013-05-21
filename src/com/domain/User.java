@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.*;
+@javax.persistence.NamedQueries({@javax.persistence.NamedQuery(name = "userForLogin",	query = "from User u where u.name = :name and u.password = :password")})
 @Entity
 @Table(name = "user")
 public class User {
